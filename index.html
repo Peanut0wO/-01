@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>第三周作業-Git與jQ作業</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script>
+        $(function () {
+            $(".btn-success").hide();
+        });
+        $(document).on('click', ".btn-info", function () {
+            var getnewData = $("#input_text").val();
+            if(getnewData == "")
+            {
+                alert("輸入欄位為空白，請先輸入!");
+            }
+            else
+            {
+
+            $('.dropdown-menu').append(' <li><a href="#">' + getnewData + '</a></li>');
+            $('#input_text').val("");
+            }
+        });
+
+        $(document).on('click', ".btn-warning", function () {
+            var get_time = $("#input_sec").val();
+            if(isNaN(get_time) || get_time == "")
+            {
+                alert("請輸入數字!");
+            }
+            else
+            {
+            $("#myimg").fadeOut(parseInt(get_time));
+            $(".btn-success").show();
+            $(".btn-warning").hide();
+            }
+        });
+        $(document).on('click', ".btn-success", function () {
+            var get_time = $("#input_sec").val();
+            $("#myimg").fadeIn(parseInt(get_time));
+            $(".btn-success").hide();
+            $(".btn-warning").show();
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <img src="大師.png" id="myimg" class="img-responsive" alt="Image">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <input type="text" id="input_text" class="form-control">
+                </div>
+                <button type="button" class="btn btn-info col-md-3">新增</button>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <input type="text" id="input_sec" class="form-control">
+                </div>
+                <button type="button" class="btn btn-warning col-md-3">消失</button>
+                <button type="button" class="btn btn-success col-md-3">出現</button>
+                
+            </div>
+
+
+</body>
+
+</html>
